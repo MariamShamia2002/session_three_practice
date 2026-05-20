@@ -28,4 +28,4 @@ def clean_funding_data(df):
 merged_inner_df=clean_funding_data(merged_inner_df)
 print(merged_inner_df.head())
 
-merged_inner_df.to_csv('merged_inner_df.csv', index=False)
+merged_inner_df.to_csv('clean_research_data.csv', index=False)
