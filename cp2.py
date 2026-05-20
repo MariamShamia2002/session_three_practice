@@ -1,3 +1,4 @@
+import pandas as pd
 df_json=pd.read_json('raw_data/publications.json')
 print (df_json.head())
 print(df_json.shape)
