@@ -18,3 +18,14 @@ print(merged_left_df.shape) # (86 rows, 23 columns) in the left merge
 # the total number of unique researchers across all three datasets is 86, which is equal to the number of researchers in the researchers dataset, 
 # as the left merge retains all rows from the left dataset (researchers) and includes matching rows from the publications and funding datasets where available. 
 # Researchers without matching entries in the publications or funding datasets will have NaN values in the corresponding columns. 
+def clean_funding_data(df):
+    df['amount_cad'] = df['amount_cad'].fillna(0)
+    df = df[df['amount_cad'] > 0]
+    df['amount_cad'] = pd.to_numeric(df['amount_cad'], errors='coerce')
+    return df
+
+
+merged_inner_df=clean_funding_data(merged_inner_df)
+print(merged_inner_df.head())
+
+merged_inner_df.to_csv('merged_inner_df.csv', index=False)
